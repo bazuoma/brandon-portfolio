@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brandon Az — Product Manager & AI Builder</title>
+  <title>Brandon Azuoma — Product Manager & AI Builder</title>
   <meta name="description" content="Product Manager and AI builder based in Los Angeles. I ship agentic systems, AI-powered SaaS, and products that work at scale." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,7 +40,6 @@
     }
     h1, h2, h3, h4, .font-heading { font-family: 'Syne', sans-serif; }
 
-    /* Fade-in on scroll */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -51,14 +50,12 @@
       transform: translateY(0);
     }
 
-    /* Nav blur */
     .nav-blur {
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       background-color: rgba(10, 10, 10, 0.85);
     }
 
-    /* Gradient hero text */
     .gradient-text {
       background: linear-gradient(135deg, #F5F5F0 0%, #3B82F6 100%);
       -webkit-background-clip: text;
@@ -66,17 +63,6 @@
       background-clip: text;
     }
 
-    /* Timeline connector */
-    .timeline-line {
-      position: absolute;
-      left: 18px;
-      top: 40px;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #3B82F6, transparent);
-    }
-
-    /* Skill pill hover */
     .skill-pill {
       transition: background-color 0.2s, color 0.2s;
     }
@@ -85,7 +71,6 @@
       color: #ffffff;
     }
 
-    /* Card hover */
     .project-card {
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
@@ -95,7 +80,6 @@
       box-shadow: 0 0 32px rgba(59, 130, 246, 0.12);
     }
 
-    /* Experience card */
     .exp-card {
       transition: border-color 0.25s;
     }
@@ -103,7 +87,6 @@
       border-color: #3B82F6;
     }
 
-    /* Scrollbar */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #0A0A0A; }
     ::-webkit-scrollbar-thumb { background: #1E1E1E; border-radius: 2px; }
@@ -111,13 +94,11 @@
 </head>
 <body class="antialiased">
 
-  <!-- ============================================================ -->
-  <!-- NAV                                                           -->
-  <!-- ============================================================ -->
+  <!-- NAV -->
   <nav class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-border">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="#hero" class="font-heading font-bold text-lg tracking-tight text-text hover:text-accent transition-colors">
-        Brandon Az
+        Brandon Azuoma
       </a>
       <div class="flex items-center gap-3 sm:gap-4">
         <a href="#projects" class="hidden sm:block text-sm text-muted hover:text-text transition-colors font-body">Work</a>
@@ -136,23 +117,17 @@
     </div>
   </nav>
 
-  <!-- ============================================================ -->
-  <!-- HERO                                                          -->
-  <!-- ============================================================ -->
+  <!-- HERO -->
   <section id="hero" class="min-h-screen flex items-center pt-20">
     <div class="max-w-6xl mx-auto px-6 py-24">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border text-muted text-xs font-body mb-8 reveal">
-          <span class="w-2 h-2 rounded-full bg-green-400 inline-block animate-pulse"></span>
-          Open to new roles · Los Angeles, CA
-        </div>
         <h1 class="font-heading font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.08] tracking-tight mb-6 reveal">
           I build<br />
           <span class="gradient-text">AI products</span><br />
           that ship.
         </h1>
         <p class="text-muted text-lg sm:text-xl font-body font-light leading-relaxed mb-10 reveal max-w-xl">
-          Lead PM at TrueComp. I work at the intersection of product strategy and AI execution — from agentic systems at enterprise scale to consumer apps built with the Claude API.
+          Lead PM at TrueComp. I work at the intersection of product strategy and AI execution — from agentic systems at enterprise scale to consumer apps built with Agentic AI.
         </p>
         <div class="flex flex-wrap gap-4 reveal">
           <a href="#projects"
@@ -168,9 +143,7 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- FEATURED PROJECTS                                             -->
-  <!-- ============================================================ -->
+  <!-- FEATURED PROJECTS -->
   <section id="projects" class="py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="mb-14 reveal">
@@ -195,7 +168,7 @@
             Real-time multiplayer music battle game. Players answer prompts, vote on each other's picks, and watch scores update live — no app download required.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Claude API</span>
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Agentic AI</span>
             <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Supabase</span>
             <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Real-time</span>
             <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Render</span>
@@ -220,9 +193,7 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- EXPERIENCE                                                    -->
-  <!-- ============================================================ -->
+  <!-- EXPERIENCE -->
   <section id="experience" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
       <div class="mb-14 reveal">
@@ -230,56 +201,91 @@
         <h2 class="font-heading font-bold text-4xl sm:text-5xl text-text">Experience</h2>
       </div>
 
-      <!-- Timeline -->
       <div class="relative">
-
-        <!-- Vertical line (desktop) -->
+        <!-- Vertical line desktop -->
         <div class="hidden md:block absolute left-[120px] top-0 bottom-0 w-px bg-gradient-to-b from-accent via-border to-transparent"></div>
 
-        <!-- Entry: TrueComp / GovInvest -->
+        <!-- TrueComp / GovInvest -->
         <div class="reveal flex flex-col md:flex-row gap-6 md:gap-0 mb-12">
-          <!-- Date col -->
           <div class="md:w-[120px] md:pr-8 flex-shrink-0">
-            <span class="text-muted text-sm font-body">2022 — Now</span>
+            <span class="text-muted text-sm font-body">2020 — Now</span>
           </div>
-          <!-- Dot -->
           <div class="hidden md:flex items-start justify-center w-[2px] relative">
             <div class="absolute top-1.5 -translate-x-[5px] w-3 h-3 rounded-full bg-accent border-2 border-bg ring-2 ring-accent/30"></div>
           </div>
-          <!-- Card -->
           <div class="exp-card flex-1 md:pl-10 border border-border rounded-2xl p-6 bg-surface">
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-5">
               <div>
-                <h3 class="font-heading font-bold text-xl text-text">Lead Product Manager</h3>
-                <p class="text-accent text-sm font-body mt-0.5">GovInvest → TrueComp · Los Angeles, CA</p>
+                <h3 class="font-heading font-bold text-xl text-text">TrueComp <span class="text-muted font-normal text-base">(fka GovInvest)</span></h3>
+                <p class="text-accent text-sm font-body mt-0.5">Torrance, CA</p>
               </div>
               <span class="text-xs px-3 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 font-body">Current</span>
             </div>
 
-            <!-- Initiative grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-              <div class="rounded-xl bg-border/40 p-4">
-                <p class="text-xs text-accent font-body font-medium uppercase tracking-wider mb-1">AI/ML Product</p>
-                <p class="text-sm text-text font-body leading-relaxed">Built and shipped ML-driven compensation models that help government agencies make smarter workforce decisions at scale.</p>
+            <!-- Role progression -->
+            <div class="space-y-5 mb-5">
+
+              <div class="border-l-2 border-accent pl-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <p class="font-body font-semibold text-text text-sm">Product Manager Lead</p>
+                  <span class="text-xs text-muted font-body">Jan 2025 – Present</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Scaled Benchmarking product to $2.56M total ARR across 83 agencies through roadmap optimization and cross-functional alignment.</li>
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Supported $721.7K in renewal ARR across 29 agencies, improving retention outcomes for the Benchmarking portfolio.</li>
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Built partnerships-focused product strategy resulting in $500K+ in revenue impact.</li>
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Own product vision, strategy, and roadmap end-to-end; lead cross-functional teams across engineering, UX, marketing, and sales.</li>
+                </ul>
               </div>
-              <div class="rounded-xl bg-border/40 p-4">
-                <p class="text-xs text-accent font-body font-medium uppercase tracking-wider mb-1">Agentic AI</p>
-                <p class="text-sm text-text font-body leading-relaxed">Designed and deployed custom AI agents that automate complex HR and finance workflows — cutting manual work for public sector clients.</p>
+
+              <div class="border-l-2 border-border pl-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <p class="font-body font-semibold text-text text-sm">Product Manager I</p>
+                  <span class="text-xs text-muted font-body">Jun 2023 – Dec 2024</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Drove $1.82M net-new ARR across 69 new public sector agencies through end-to-end Benchmarking product strategy and launch.</li>
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Partnered with Sales and CS to protect and renew revenue, contributing to 74% of company's ARR base.</li>
+                </ul>
               </div>
-              <div class="rounded-xl bg-border/40 p-4">
-                <p class="text-xs text-accent font-body font-medium uppercase tracking-wider mb-1">Platform Ownership</p>
-                <p class="text-sm text-text font-body leading-relaxed">Owned the full product roadmap for a GovTech SaaS platform serving hundreds of public agencies across the US.</p>
+
+              <div class="border-l-2 border-border pl-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <p class="font-body font-semibold text-text text-sm">IT Project Manager</p>
+                  <span class="text-xs text-muted font-body">Apr 2022 – Jun 2023</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Established Application Operations team and managed service desk for the full suite of customer-facing applications.</li>
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Managed $1M+ in ARR across company resources and personnel through successful technical project delivery.</li>
+                </ul>
               </div>
-              <div class="rounded-xl bg-border/40 p-4">
-                <p class="text-xs text-accent font-body font-medium uppercase tracking-wider mb-1">Data & Delivery</p>
-                <p class="text-sm text-text font-body leading-relaxed">Led agile squads and used quantitative analytics to prioritize features, reduce churn, and drive adoption across product lines.</p>
+
+              <div class="border-l-2 border-border pl-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <p class="font-body font-semibold text-text text-sm">Business Operations Specialist</p>
+                  <span class="text-xs text-muted font-body">Jul 2021 – Mar 2022</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Implemented forecasting tool for the Sales department, improving forecast accuracy by 56%.</li>
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Managed Salesforce configuration, data validity, and integrity across systems.</li>
+                </ul>
               </div>
+
+              <div class="border-l-2 border-border pl-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <p class="font-body font-semibold text-text text-sm">IT & Data Analyst</p>
+                  <span class="text-xs text-muted font-body">Aug 2020 – Jul 2021</span>
+                </div>
+                <ul class="space-y-1.5">
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Led org-wide transition from Google Suite to Office 365 E5.</li>
+                  <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Built executive reports and dashboards using Salesforce, PowerBI, and BI tooling.</li>
+                </ul>
+              </div>
+
             </div>
 
-            <!-- Skills -->
             <div class="flex flex-wrap gap-2">
               <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">AI/ML Strategy</span>
-              <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Agentic Systems</span>
               <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">SaaS Roadmap</span>
               <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">GovTech</span>
               <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Agile / Scrum</span>
@@ -289,8 +295,8 @@
           </div>
         </div>
 
-        <!-- AI Consulting Practice -->
-        <div class="reveal flex flex-col md:flex-row gap-6 md:gap-0">
+        <!-- Technical & AI Consulting Practice -->
+        <div class="reveal flex flex-col md:flex-row gap-6 md:gap-0 mb-12">
           <div class="md:w-[120px] md:pr-8 flex-shrink-0">
             <span class="text-muted text-sm font-body">2024 — Now</span>
           </div>
@@ -300,16 +306,16 @@
           <div class="exp-card flex-1 md:pl-10 border border-border rounded-2xl p-6 bg-surface">
             <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
               <div>
-                <h3 class="font-heading font-bold text-xl text-text">AI Consulting Practice</h3>
+                <h3 class="font-heading font-bold text-xl text-text">Technical & AI Consulting Practice</h3>
                 <p class="text-accent text-sm font-body mt-0.5">Independent · Los Angeles, CA</p>
               </div>
               <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-body">Building</span>
             </div>
             <p class="text-muted text-sm font-body leading-relaxed mb-4">
-              Helping companies think clearly about where AI creates real leverage — and building the agentic tools to prove it. Specializing in LLM integration, workflow automation, and AI product strategy.
+              Helping companies identify where AI creates real leverage — and building the agentic tools to prove it. Specializing in LLM integration, workflow automation, and AI product strategy.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Claude API</span>
+              <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Agentic AI</span>
               <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">LLM Integration</span>
               <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Prompt Engineering</span>
               <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">AI Product Strategy</span>
@@ -317,13 +323,107 @@
           </div>
         </div>
 
+        <!-- Oaktree Capital Management -->
+        <div class="reveal flex flex-col md:flex-row gap-6 md:gap-0 mb-12">
+          <div class="md:w-[120px] md:pr-8 flex-shrink-0">
+            <span class="text-muted text-sm font-body">2019 — 2020</span>
+          </div>
+          <div class="hidden md:flex items-start justify-center w-[2px] relative">
+            <div class="absolute top-1.5 -translate-x-[5px] w-3 h-3 rounded-full bg-border border-2 border-bg ring-2 ring-border/30"></div>
+          </div>
+          <div class="exp-card flex-1 md:pl-10 border border-border rounded-2xl p-6 bg-surface">
+            <div class="mb-4">
+              <h3 class="font-heading font-bold text-xl text-text">Oaktree Capital Management</h3>
+              <p class="text-accent text-sm font-body mt-0.5">Tax & Treasury Operations, Analyst · Los Angeles, CA</p>
+              <p class="text-xs text-muted font-body mt-1">Jul 2019 – Jul 2020</p>
+            </div>
+            <ul class="space-y-1.5 mb-4">
+              <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Built the internal bank account database used for forecasting, reporting, and analytics across the firm.</li>
+              <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Managed integrity of all corporate investor data and maintained the corporate investor database.</li>
+              <li class="text-sm text-muted font-body leading-relaxed flex gap-2"><span class="text-accent mt-0.5 flex-shrink-0">▸</span>Led operational projects related to data services and database management.</li>
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Data Analytics</span>
+              <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Database Management</span>
+              <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Financial Operations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Magnetic Component Engineering -->
+        <div class="reveal flex flex-col md:flex-row gap-6 md:gap-0">
+          <div class="md:w-[120px] md:pr-8 flex-shrink-0">
+            <span class="text-muted text-sm font-body">2018</span>
+          </div>
+          <div class="hidden md:flex items-start justify-center w-[2px] relative">
+            <div class="absolute top-1.5 -translate-x-[5px] w-3 h-3 rounded-full bg-border border-2 border-bg ring-2 ring-border/30"></div>
+          </div>
+          <div class="exp-card flex-1 md:pl-10 border border-border rounded-2xl p-6 bg-surface">
+            <div class="mb-3">
+              <h3 class="font-heading font-bold text-xl text-text">Magnetic Component Engineering</h3>
+              <p class="text-accent text-sm font-body mt-0.5">Systems IT, Intern · Torrance, CA</p>
+              <p class="text-xs text-muted font-body mt-1">Sep 2018 – Nov 2018</p>
+            </div>
+            <p class="text-muted text-sm font-body leading-relaxed">
+              Diagnosed technical issues in product data management systems, performed software updates, and assisted the Systems IT department with day-to-day troubleshooting.
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- SKILLS                                                        -->
-  <!-- ============================================================ -->
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <section id="education" class="py-24 border-t border-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-14 reveal">
+        <p class="text-accent text-sm font-body font-medium uppercase tracking-widest mb-3">Background</p>
+        <h2 class="font-heading font-bold text-4xl sm:text-5xl text-text">Education & Certifications</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <div class="reveal exp-card border border-border rounded-2xl p-6 bg-surface">
+          <p class="text-3xl mb-4">🎓</p>
+          <h3 class="font-heading font-bold text-lg text-text mb-1">Bachelor of Business Administration</h3>
+          <p class="text-accent text-sm font-body mb-2">Applied Information Management Systems</p>
+          <p class="text-muted text-sm font-body">Loyola Marymount University · Los Angeles, CA</p>
+        </div>
+
+        <div class="reveal exp-card border border-border rounded-2xl p-6 bg-surface">
+          <p class="text-3xl mb-4">📜</p>
+          <h3 class="font-heading font-bold text-lg text-text mb-4">Certifications</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5 flex-shrink-0">▸</span>
+              <div>
+                <p class="text-text text-sm font-body font-medium">Advanced Certified Scrum Product Owner</p>
+                <p class="text-muted text-xs font-body mt-0.5">Scrum Alliance</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5 flex-shrink-0">▸</span>
+              <div>
+                <p class="text-text text-sm font-body font-medium">Certified Scrum Product Owner</p>
+                <p class="text-muted text-xs font-body mt-0.5">Scrum Alliance</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent mt-0.5 flex-shrink-0">▸</span>
+              <div>
+                <p class="text-text text-sm font-body font-medium">Certified Associate in Project Management</p>
+                <p class="text-muted text-xs font-body mt-0.5">Google</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
   <section id="skills" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
       <div class="mb-14 reveal">
@@ -347,11 +447,11 @@
         <div class="reveal">
           <p class="text-xs text-muted font-body font-medium uppercase tracking-widest mb-4">AI / ML</p>
           <div class="flex flex-col gap-2">
-            <span class="skill-pill text-sm px-3 py-2 rounded-lg border border-border text-text font-body">Claude API</span>
-            <span class="skill-pill text-sm px-3 py-2 rounded-lg border border-border text-text font-body">Agentic Systems</span>
+            <span class="skill-pill text-sm px-3 py-2 rounded-lg border border-border text-text font-body">Agentic AI</span>
             <span class="skill-pill text-sm px-3 py-2 rounded-lg border border-border text-text font-body">LLM Integration</span>
             <span class="skill-pill text-sm px-3 py-2 rounded-lg border border-border text-text font-body">Prompt Engineering</span>
             <span class="skill-pill text-sm px-3 py-2 rounded-lg border border-border text-text font-body">AI Product Design</span>
+            <span class="skill-pill text-sm px-3 py-2 rounded-lg border border-border text-text font-body">Workflow Automation</span>
           </div>
         </div>
 
@@ -380,19 +480,17 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- ABOUT                                                         -->
-  <!-- ============================================================ -->
+  <!-- ABOUT -->
   <section id="about" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
       <div class="max-w-2xl reveal">
         <p class="text-accent text-sm font-body font-medium uppercase tracking-widest mb-3">About</p>
         <h2 class="font-heading font-bold text-4xl sm:text-5xl text-text mb-8">A little about me</h2>
         <p class="text-text text-lg font-body leading-relaxed mb-5">
-          I'm a product manager who builds — not just plans. From AI-powered compensation platforms serving government agencies to multiplayer games using the Claude API, I work at the intersection of strategy and execution.
+          I'm a product manager who builds — not just plans. From AI-powered compensation platforms serving government agencies to multiplayer games using Agentic AI, I work at the intersection of strategy and execution.
         </p>
         <p class="text-muted text-lg font-body leading-relaxed mb-10">
-          Based in Los Angeles, I'm currently leading product at TrueComp while building an AI consulting practice on the side. I'm drawn to hard problems where AI creates real, measurable leverage — and I stick around long enough to see them ship.
+          Based in Los Angeles, I'm currently leading product at TrueComp while building a Technical & AI consulting practice on the side. I'm drawn to hard problems where AI creates real, measurable leverage — and I stick around long enough to see them ship.
         </p>
         <a href="mailto:bazuoma@gmail.com"
            class="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white font-body font-medium rounded-full transition-colors">
@@ -402,21 +500,19 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- CTA BANNER                                                    -->
-  <!-- ============================================================ -->
+  <!-- CTA BANNER -->
   <section class="py-20 border-t border-border">
     <div class="max-w-6xl mx-auto px-6 text-center reveal">
       <h2 class="font-heading font-bold text-4xl sm:text-5xl text-text mb-4">Let's build something.</h2>
       <p class="text-muted text-lg font-body mb-8 max-w-lg mx-auto">
-        Open to Senior PM, Director of Product, and AI Product Manager roles in LA. Hybrid or onsite preferred.
+        Based in Los Angeles. Reach out about product consulting, AI strategy, or collaboration opportunities.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="mailto:bazuoma@gmail.com"
            class="px-6 py-3 bg-accent hover:bg-accent-hover text-white font-body font-medium rounded-full transition-colors">
           Get in Touch
         </a>
-        <a href="https://linkedin.com/in/bazuoma" target="_blank" rel="noopener noreferrer"
+        <a href="https://www.linkedin.com/in/brandon-azuoma-756b48148/" target="_blank" rel="noopener noreferrer"
            class="px-6 py-3 border border-border hover:border-accent hover:text-accent text-text font-body font-medium rounded-full transition-colors">
           LinkedIn ↗
         </a>
@@ -424,14 +520,12 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- FOOTER                                                        -->
-  <!-- ============================================================ -->
+  <!-- FOOTER -->
   <footer class="py-10 border-t border-border">
     <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-muted text-sm font-body">© 2026 Brandon Az</p>
+      <p class="text-muted text-sm font-body">© 2026 Brandon Azuoma</p>
       <div class="flex items-center gap-6">
-        <a href="https://linkedin.com/in/bazuoma" target="_blank" rel="noopener noreferrer"
+        <a href="https://www.linkedin.com/in/brandon-azuoma-756b48148/" target="_blank" rel="noopener noreferrer"
            class="text-muted hover:text-text text-sm font-body transition-colors">LinkedIn</a>
         <a href="https://github.com/bazuoma" target="_blank" rel="noopener noreferrer"
            class="text-muted hover:text-text text-sm font-body transition-colors">GitHub</a>
@@ -443,9 +537,7 @@
     </div>
   </footer>
 
-  <!-- ============================================================ -->
-  <!-- SCROLL REVEAL JS                                              -->
-  <!-- ============================================================ -->
+  <!-- SCROLL REVEAL -->
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
