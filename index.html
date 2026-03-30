@@ -101,7 +101,7 @@
         Brandon Azuoma
       </a>
       <div class="flex items-center gap-3 sm:gap-4">
-        <a href="#projects" class="hidden sm:block text-sm text-muted hover:text-text transition-colors font-body">Work</a>
+        <a href="#case-studies" class="hidden sm:block text-sm text-muted hover:text-text transition-colors font-body">Case Studies</a>
         <a href="#experience" class="hidden sm:block text-sm text-muted hover:text-text transition-colors font-body">Experience</a>
         <a href="#skills" class="hidden sm:block text-sm text-muted hover:text-text transition-colors font-body">Skills</a>
         <a href="#about" class="hidden sm:block text-sm text-muted hover:text-text transition-colors font-body">About</a>
@@ -130,9 +130,9 @@
           Experienced Product Manager working at the intersection of product strategy and AI execution — from agentic systems at enterprise scale to consumer apps built with Agentic AI.
         </p>
         <div class="flex flex-wrap gap-4 reveal">
-          <a href="#projects"
+          <a href="#case-studies"
              class="px-6 py-3 bg-accent hover:bg-accent-hover text-white font-body font-medium rounded-full transition-colors">
-            View My Work →
+            View Case Studies →
           </a>
           <a href="assets/Brandon_Azuoma_RESUME.pdf" target="_blank"
              class="px-6 py-3 border border-border hover:border-accent hover:text-accent text-text font-body font-medium rounded-full transition-colors">
@@ -143,51 +143,82 @@
     </div>
   </section>
 
-  <!-- FEATURED PROJECTS -->
-  <section id="projects" class="py-24">
+  <!-- CASE STUDIES -->
+  <section id="case-studies" class="py-24 border-t border-border">
     <div class="max-w-6xl mx-auto px-6">
       <div class="mb-14 reveal">
-        <p class="text-accent text-sm font-body font-medium uppercase tracking-widest mb-3">Featured Work</p>
-        <h2 class="font-heading font-bold text-4xl sm:text-5xl text-text">Things I've built</h2>
+        <p class="text-accent text-sm font-body font-medium uppercase tracking-widest mb-3">Deep Dives</p>
+        <h2 class="font-heading font-bold text-4xl sm:text-5xl text-text">Case Studies</h2>
+        <p class="text-muted font-body mt-3 max-w-xl">Problem framing, user research, tradeoff decisions, and honest reflections on what I'd do differently.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <!-- Mic Check -->
-        <a href="https://mic-check-game.onrender.com/" target="_blank" rel="noopener noreferrer"
+        <!-- TrueComp AI -->
+        <a href="case-studies/truecomp-ai-scoring.html"
+           class="project-card block border border-border rounded-2xl p-6 bg-surface group reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-2xl">🏛️</div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-body px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">Professional</span>
+              <span class="text-muted text-sm group-hover:text-accent transition-colors">→</span>
+            </div>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-text mb-1">Class & Comp Study Intelligence</h3>
+          <p class="text-accent text-xs font-body mb-3">TrueComp · GovTech SaaS · 2024–2025</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-5">
+            How I pitched and led an AI-powered classification and compensation platform for government agencies — replacing 6–12 month consultant studies with a self-service, always-on system.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">AI/ML Product</span>
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">GovTech</span>
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Comp Studies</span>
+          </div>
+        </a>
+
+        <!-- Mic Check Case Study -->
+        <a href="case-studies/mic-check.html"
            class="project-card block border border-border rounded-2xl p-6 bg-surface group reveal">
           <div class="flex items-start justify-between mb-4">
             <div class="w-12 h-12 rounded-xl bg-border flex items-center justify-center text-2xl">🎤</div>
             <div class="flex items-center gap-2">
-              <span class="text-xs font-body px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">AI</span>
-              <span class="text-muted text-sm group-hover:text-accent transition-colors">↗</span>
+              <span class="text-xs font-body px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Personal</span>
+              <span class="text-muted text-sm group-hover:text-accent transition-colors">→</span>
             </div>
           </div>
-          <h3 class="font-heading font-bold text-xl text-text mb-2">Mic Check</h3>
+          <h3 class="font-heading font-bold text-xl text-text mb-1">Mic Check — From Idea to Game</h3>
+          <p class="text-accent text-xs font-body mb-3">Personal Project · Claude API + Supabase</p>
           <p class="text-muted text-sm font-body leading-relaxed mb-5">
-            Real-time multiplayer music battle game. Players answer prompts, vote on each other's picks, and watch scores update live — no app download required.
+            How I designed and built a real-time multiplayer music battle game solo — product decisions, AI integration, and what I'd change if I started over.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Agentic AI</span>
-            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Supabase</span>
-            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Real-time</span>
-            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Render</span>
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Consumer Product</span>
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Claude API</span>
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">0-to-1</span>
           </div>
         </a>
 
-        <!-- Placeholder card 2 -->
-        <div class="project-card border border-dashed border-border rounded-2xl p-6 flex flex-col items-center justify-center text-center min-h-[260px] reveal">
-          <p class="text-3xl mb-3">🔧</p>
-          <p class="font-heading font-semibold text-text mb-1">More coming soon</p>
-          <p class="text-muted text-sm font-body">Currently shipping</p>
-        </div>
-
-        <!-- Placeholder card 3 -->
-        <div class="project-card border border-dashed border-border rounded-2xl p-6 flex flex-col items-center justify-center text-center min-h-[260px] reveal">
-          <p class="text-3xl mb-3">🚀</p>
-          <p class="font-heading font-semibold text-text mb-1">AI consulting work</p>
-          <p class="text-muted text-sm font-body">Case studies dropping soon</p>
-        </div>
+        <!-- AI PM OS -->
+        <a href="case-studies/ai-pm-os.html"
+           class="project-card block border border-border rounded-2xl p-6 bg-surface group reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-2xl">🧠</div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-body px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Speculative</span>
+              <span class="text-muted text-sm group-hover:text-accent transition-colors">→</span>
+            </div>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-text mb-1">The PM Intelligence Layer</h3>
+          <p class="text-accent text-xs font-body mb-3">Thought Leadership · Product Concept · 2026</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-5">
+            How I'd build the AI operating system every product manager needs — not another integration, but the intelligence layer that connects your tools, team, and roadmap.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">AI Strategy</span>
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">PM Tooling</span>
+            <span class="skill-pill text-xs px-2.5 py-1 rounded-full border border-border text-muted font-body">Speculative Design</span>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -295,7 +326,7 @@
           </div>
         </div>
 
-        <!-- Technical & AI Consulting Practice -->
+        <!-- Azuzu Consulting -->
         <div class="reveal flex flex-col md:flex-row gap-6 md:gap-0 mb-12">
           <div class="md:w-[120px] md:pr-8 flex-shrink-0">
             <span class="text-muted text-sm font-body">2024 — Now</span>
@@ -306,7 +337,7 @@
           <div class="exp-card flex-1 md:pl-10 border border-border rounded-2xl p-6 bg-surface">
             <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
               <div>
-                <h3 class="font-heading font-bold text-xl text-text">Technical & AI Consulting Practice</h3>
+                <h3 class="font-heading font-bold text-xl text-text">Azuzu Consulting</h3>
                 <p class="text-accent text-sm font-body mt-0.5">Independent · Los Angeles, CA</p>
               </div>
               <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-body">Building</span>

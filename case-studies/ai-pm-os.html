@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The PM Intelligence Layer — Brandon Azuoma</title>
+  <meta name="description" content="Thought leadership: How Brandon Azuoma would design an AI operating system for effective product managers — the intelligence layer that connects your tools, your team, and your roadmap." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0A0A0A',
+            surface: '#111111',
+            border: '#1E1E1E',
+            text: '#F5F5F0',
+            muted: '#888888',
+            accent: '#3B82F6',
+            'accent-hover': '#2563EB',
+          },
+          fontFamily: {
+            heading: ['Syne', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: #0A0A0A; color: #F5F5F0; font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, .font-heading { font-family: 'Syne', sans-serif; }
+    .nav-blur {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background-color: rgba(10, 10, 10, 0.85);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #F5F5F0 0%, #3B82F6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .section-label {
+      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #3B82F6;
+    }
+    /* Visual wireframe system */
+    .wf-wrap { background:#0d0d0d; border:1px solid #2a2a2a; border-radius:14px; overflow:hidden; box-shadow:0 24px 48px rgba(0,0,0,0.5); }
+    .wf-bar { background:#1a1a1a; border-bottom:1px solid #2a2a2a; padding:10px 16px; display:flex; align-items:center; gap:8px; }
+    .wf-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .wf-topbar { background:#141414; border-bottom:1px solid #222; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; }
+    .wf-body { padding:20px; }
+    .wf-title { color:#F5F5F0; font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; }
+    .wf-label { color:#888; font-family:'Inter',sans-serif; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; }
+    .wf-text { color:#aaa; font-family:'Inter',sans-serif; font-size:0.8rem; line-height:1.5; }
+    .wf-text-sm { color:#888; font-family:'Inter',sans-serif; font-size:0.72rem; line-height:1.4; }
+    .wf-alert { border-radius:8px; padding:12px 14px; margin-bottom:10px; }
+    .wf-alert-warn { background:#1c1500; border:1px solid #3d2e00; border-left:3px solid #f59e0b; }
+    .wf-alert-info { background:#0c1828; border:1px solid #1a3050; border-left:3px solid #3B82F6; }
+    .wf-alert-green { background:#0c1a0f; border:1px solid #1a3822; border-left:3px solid #22c55e; }
+    .wf-alert-title { color:#F5F5F0; font-family:'Inter',sans-serif; font-size:0.78rem; font-weight:600; margin-bottom:3px; }
+    .wf-btn-xs { display:inline-block; padding:3px 10px; border-radius:99px; font-size:0.68rem; font-family:'Inter',sans-serif; font-weight:500; cursor:default; }
+    .wf-btn-blue { background:#1d3461; color:#93c5fd; border:1px solid #2a4a80; }
+    .wf-btn-ghost { background:#1e1e1e; color:#888; border:1px solid #2a2a2a; }
+    .wf-divider { border:none; border-top:1px solid #222; margin:14px 0; }
+    .wf-focus-item { display:flex; align-items:center; gap:8px; padding:5px 0; border-bottom:1px solid #1a1a1a; }
+    .wf-focus-dot { width:7px; height:7px; border-radius:50%; background:#3B82F6; flex-shrink:0; }
+    .wf-panel { background:#111; border:1px solid #222; border-radius:8px; padding:12px; }
+    .wf-input { background:#0d0d0d; border:1px solid #2a2a2a; border-radius:6px; padding:10px 12px; color:#888; font-family:'Inter',sans-serif; font-size:0.78rem; line-height:1.6; }
+    .wf-insight { background:#0c1828; border:1px solid #1a3050; border-radius:8px; padding:12px; margin-bottom:8px; }
+    .wf-risk { background:#1a0c0c; border:1px solid #3a1a1a; border-radius:8px; padding:12px; }
+    .wf-insight-label { color:#60a5fa; font-size:0.65rem; font-family:'Inter',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; }
+    .wf-risk-label { color:#f87171; font-size:0.65rem; font-family:'Inter',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; }
+    .metric-card {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: border-color 0.25s;
+    }
+    .metric-card:hover { border-color: #3B82F6; }
+    .option-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 1px;
+      background: #1E1E1E;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .option-cell {
+      background: #111111;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .option-cell.header {
+      background: #161616;
+      font-weight: 600;
+      color: #F5F5F0;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .option-cell.selected { background: #0d1a2d; border-left: 2px solid #3B82F6; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #1E1E1E; border-radius: 2px; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAV -->
+  <nav class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" class="font-heading font-bold text-lg tracking-tight text-text hover:text-accent transition-colors">
+        ← Brandon Azuoma
+      </a>
+      <div class="flex items-center gap-3">
+        <span class="text-xs px-2.5 py-1 rounded-full bg-surface border border-border text-muted font-body">Thought Leadership</span>
+        <a href="../index.html#contact"
+           class="text-sm px-4 py-2 bg-accent hover:bg-accent-hover text-white rounded-full font-body transition-colors">
+          Contact
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 font-body">Speculative Design</span>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-surface border border-border text-muted font-body">March 2026</span>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-surface border border-border text-muted font-body">PM Tooling · AI Strategy</span>
+        </div>
+        <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight mb-5">
+          The PM<br />
+          <span class="gradient-text">Intelligence Layer</span>
+        </h1>
+        <p class="text-muted text-lg sm:text-xl font-body font-light leading-relaxed max-w-2xl">
+          How I'd build the AI operating system every product manager actually needs — not another integration, but the intelligence layer that makes every PM workflow faster, more defensible, and less exhausting.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal">
+        <div class="bg-surface border border-border rounded-xl p-5">
+          <p class="text-xs text-muted font-body uppercase tracking-widest mb-2">A note on this case study</p>
+          <p class="text-muted text-sm font-body leading-relaxed">
+            This is a speculative product case study — not a shipped product, but a fully worked-through design proposal. I wrote it because I kept running into the same friction at work: my tools don't talk to each other, and intelligence lives in my head instead of my system. This is how I'd solve it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 PROBLEM FRAMING -->
+  <section class="py-20 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">01 — Problem Framing</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-8">PMs are the most expensive information bottleneck in tech</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+        <div>
+          <p class="text-muted font-body leading-relaxed mb-5">
+            A product manager's job is to make good decisions faster than anyone else on the team. But the reality of most PM workflows is exactly the opposite: we spend an enormous portion of every week synthesizing information — reading Slack threads, pulling Jira status, skimming Confluence docs, reviewing customer feedback — before we can even begin to make a call.
+          </p>
+          <p class="text-muted font-body leading-relaxed mb-5">
+            The tools exist. The data exists. But the intelligence layer that connects them doesn't. Every PM is manually operating as the integration point between systems that were never designed to talk to each other.
+          </p>
+          <p class="text-muted font-body leading-relaxed">
+            That's the problem. Not a feature gap — a structural gap. The question is what to build to fix it.
+          </p>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-surface border border-border rounded-xl p-5">
+            <p class="text-red-400 text-sm font-body font-semibold mb-2">How PMs spend their time (the honest version)</p>
+            <ul class="space-y-2">
+              <li class="text-muted text-sm font-body flex gap-2 items-start">
+                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <span>Reading and summarizing information across 7–10 tools</span>
+              </li>
+              <li class="text-muted text-sm font-body flex gap-2 items-start">
+                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <span>Writing status updates that restate Jira tickets in plain English</span>
+              </li>
+              <li class="text-muted text-sm font-body flex gap-2 items-start">
+                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <span>Starting PRDs from a blank page with no memory of prior decisions</span>
+              </li>
+              <li class="text-muted text-sm font-body flex gap-2 items-start">
+                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <span>Rebuilding context after every context switch</span>
+              </li>
+              <li class="text-muted text-sm font-body flex gap-2 items-start">
+                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <span>Preparing for the same meeting they had 3 weeks ago</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 MARKET DATA -->
+  <section class="py-20 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">02 — Market Context</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-8">The gap between AI hype and PM reality</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 reveal">
+        <div class="metric-card text-center py-8">
+          <p class="text-4xl font-heading font-bold text-accent mb-2">68%</p>
+          <p class="text-muted text-sm font-body">of PMs report spending more than 20 hours per week on tasks they describe as "administrative"</p>
+          <p class="text-xs text-muted/50 font-body mt-3">Product Collective Survey, 2024</p>
+        </div>
+        <div class="metric-card text-center py-8">
+          <p class="text-4xl font-heading font-bold text-accent mb-2">7–10</p>
+          <p class="text-muted text-sm font-body">avg. number of tools in a senior PM's daily stack — none of which share context with each other</p>
+          <p class="text-xs text-muted/50 font-body mt-3">Industry average</p>
+        </div>
+        <div class="metric-card text-center py-8">
+          <p class="text-4xl font-heading font-bold text-accent mb-2">$47B</p>
+          <p class="text-muted text-sm font-body">projected AI productivity software market by 2028 — most of which is targeting developers, not PMs</p>
+          <p class="text-xs text-muted/50 font-body mt-3">Gartner, 2025</p>
+        </div>
+      </div>
+
+      <div class="mt-8 reveal">
+        <div class="bg-surface border border-border rounded-xl p-6">
+          <p class="font-heading font-semibold text-text mb-3">Why existing solutions fall short</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <p class="text-muted text-sm font-body font-semibold mb-1">Notion AI / Confluence AI</p>
+              <p class="text-muted text-sm font-body">Helpful for document drafting, but siloed within a single tool. Doesn't know about your Jira board or your Slack threads.</p>
+            </div>
+            <div>
+              <p class="text-muted text-sm font-body font-semibold mb-1">"AI in Jira" features</p>
+              <p class="text-muted text-sm font-body">Summarizes tickets. Doesn't understand roadmap context, team dynamics, or strategic tradeoffs.</p>
+            </div>
+            <div>
+              <p class="text-muted text-sm font-body font-semibold mb-1">ChatGPT / Claude (generic)</p>
+              <p class="text-muted text-sm font-body">Powerful but stateless. You paste context in, it responds, and tomorrow it remembers nothing about your product.</p>
+            </div>
+            <div>
+              <p class="text-muted text-sm font-body font-semibold mb-1">PM-specific AI tools (ProductBoard AI, etc.)</p>
+              <p class="text-muted text-sm font-body">Feature-level AI on top of a single tool. Doesn't address the cross-tool intelligence gap.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 USER PERSONAS -->
+  <section class="py-20 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">03 — User Personas</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-8">Who this is built for</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-lg mb-4">🌱</div>
+          <p class="font-heading font-bold text-text mb-1">Sarah</p>
+          <p class="text-accent text-xs font-body mb-3">Junior PM · Series B Startup</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-4">
+            Writes PRDs from scratch and receives feedback only after she's gone deep. Unsure of her instincts. Spends hours formatting documents that should take minutes. Doesn't have a senior PM to shadow.
+          </p>
+          <div class="space-y-1">
+            <p class="text-xs font-body font-semibold text-text">Core need</p>
+            <p class="text-muted text-xs font-body">A thinking partner that catches blind spots before the PRD review</p>
+          </div>
+        </div>
+
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-lg mb-4">⚡</div>
+          <p class="font-heading font-bold text-text mb-1">Marcus</p>
+          <p class="text-accent text-xs font-body mb-3">Senior PM · Enterprise SaaS</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-4">
+            Manages three workstreams and eight stakeholders. Loses an hour each morning just re-orienting. Context-switches 15+ times per day. His biggest productivity leak is async thread management.
+          </p>
+          <div class="space-y-1">
+            <p class="text-xs font-body font-semibold text-text">Core need</p>
+            <p class="text-muted text-xs font-body">Fast context recovery and auto-generated stakeholder briefs</p>
+          </div>
+        </div>
+
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-lg mb-4">🎯</div>
+          <p class="font-heading font-bold text-text mb-1">Linda</p>
+          <p class="text-accent text-xs font-body mb-3">Head of Product · 200-person company</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-4">
+            Manages a team of six PMs across two products. Can't see what's happening without weekly status meetings that take half a day. Strategic decisions are bottlenecked on information she never has in the right format.
+          </p>
+          <div class="space-y-1">
+            <p class="text-xs font-body font-semibold text-text">Core need</p>
+            <p class="text-muted text-xs font-body">Portfolio-level visibility without the meeting overhead</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 bg-surface border border-border rounded-xl p-5 reveal">
+        <p class="text-sm font-body text-muted"><span class="text-text font-semibold">Common thread:</span> All three personas are drowning in information that's technically available but practically inaccessible. The solution isn't more information — it's intelligence that synthesizes and surfaces what matters, in the format they need, when they need it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 OPTIONS EVALUATION -->
+  <section class="py-20 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">04 — Options Evaluation</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-8">What to build (and what to avoid)</h2>
+      </div>
+
+      <div class="reveal overflow-x-auto">
+        <div class="min-w-[600px]">
+          <div class="option-row mb-px">
+            <div class="option-cell header">Approach</div>
+            <div class="option-cell header text-center">Cross-tool</div>
+            <div class="option-cell header text-center">Context-aware</div>
+            <div class="option-cell header text-center">Adoption risk</div>
+          </div>
+          <div class="option-row mb-px">
+            <div class="option-cell">
+              <p class="text-text text-sm font-semibold">AI copilot inside existing tools</p>
+              <p class="text-muted text-xs mt-0.5">Notion AI, Confluence AI, Jira AI</p>
+            </div>
+            <div class="option-cell text-center"><span class="text-red-400 text-sm">None</span></div>
+            <div class="option-cell text-center"><span class="text-yellow-400 text-sm">Partial</span></div>
+            <div class="option-cell text-center"><span class="text-green-400 text-sm">Low</span></div>
+          </div>
+          <div class="option-row mb-px">
+            <div class="option-cell">
+              <p class="text-text text-sm font-semibold">Standalone PM AI assistant</p>
+              <p class="text-muted text-xs mt-0.5">Chat interface for PM questions, no integrations</p>
+            </div>
+            <div class="option-cell text-center"><span class="text-red-400 text-sm">None</span></div>
+            <div class="option-cell text-center"><span class="text-red-400 text-sm">None</span></div>
+            <div class="option-cell text-center"><span class="text-yellow-400 text-sm">Medium</span></div>
+          </div>
+          <div class="option-row mb-px">
+            <div class="option-cell selected">
+              <div class="flex items-center gap-2 mb-0.5">
+                <p class="text-text text-sm font-semibold">Connected intelligence layer ✓</p>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/20">Selected</span>
+              </div>
+              <p class="text-muted text-xs">AI layer that reads across Jira, Notion, Slack, and customer feedback to synthesize cross-tool context</p>
+            </div>
+            <div class="option-cell selected text-center"><span class="text-green-400 text-sm">Full</span></div>
+            <div class="option-cell selected text-center"><span class="text-green-400 text-sm">Full</span></div>
+            <div class="option-cell selected text-center"><span class="text-red-400 text-sm">High</span></div>
+          </div>
+          <div class="option-row">
+            <div class="option-cell">
+              <p class="text-text text-sm font-semibold">Opinionated PM app with AI-native design</p>
+              <p class="text-muted text-xs mt-0.5">Replace the stack with a new tool built for AI-era PM workflows</p>
+            </div>
+            <div class="option-cell text-center"><span class="text-yellow-400 text-sm">Partial</span></div>
+            <div class="option-cell text-center"><span class="text-green-400 text-sm">High</span></div>
+            <div class="option-cell text-center"><span class="text-red-400 text-sm">Very High</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 reveal">
+        <p class="text-muted font-body leading-relaxed">
+          Option 3 (connected intelligence layer) is right but hard to build. Option 4 (replace the stack) is the dream but requires behavior change that rarely happens at scale. The MVP strategy is to win on a single workflow first — something that replaces one hour of a PM's week so convincingly they can't imagine going back. Then expand the connection surface from there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 WHAT I'D BUILD -->
+  <section class="py-20 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">05 — The Product</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-3">What the PM Intelligence Layer actually does</h2>
+        <p class="text-muted font-body mb-10">Four core modules. Each one replaces a specific type of PM friction.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 reveal">
+
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-2xl mb-3">📄</p>
+          <p class="font-heading font-bold text-text mb-2">Document Intelligence</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-3">
+            AI reads PRDs, meeting notes, and customer feedback and surfaces patterns. "Three customers this week mentioned they can't find the export button" — without you having to read every ticket.
+          </p>
+          <p class="text-muted text-xs font-body"><span class="text-text">Key behavior:</span> Proactively flags tensions between your PRD and recent customer feedback — before sprint planning, not after.</p>
+        </div>
+
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-2xl mb-3">🧠</p>
+          <p class="font-heading font-bold text-text mb-2">Decision Support</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-3">
+            Before you ship a feature, the system runs an automated check: does this conflict with a prior product decision? Does the data support the hypothesis? Have similar bets failed elsewhere?
+          </p>
+          <p class="text-muted text-xs font-body"><span class="text-text">Key behavior:</span> Surfaces your own historical decisions so you're not repeating debates you already had six months ago.</p>
+        </div>
+
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-2xl mb-3">📊</p>
+          <p class="font-heading font-bold text-text mb-2">Stakeholder Briefings</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-3">
+            Auto-generates weekly status updates from Jira and Linear state, formatted differently for engineering (technical detail), leadership (business impact), and cross-functional partners (dependencies only).
+          </p>
+          <p class="text-muted text-xs font-body"><span class="text-text">Key behavior:</span> You review and approve — you don't write from scratch. Every stakeholder gets the format they actually process.</p>
+        </div>
+
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-2xl mb-3">🎯</p>
+          <p class="font-heading font-bold text-text mb-2">North Star Tracker</p>
+          <p class="text-muted text-sm font-body leading-relaxed mb-3">
+            Live dashboard mapping your active roadmap initiatives to their declared metrics. Flags when a shipped feature hasn't moved its stated metric in 30 days — so nothing ships and disappears into the void.
+          </p>
+          <p class="text-muted text-xs font-body"><span class="text-text">Key behavior:</span> Creates accountability between the story you told in the PRD and the results you're seeing in production.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 NORTH STAR -->
+  <section class="py-20 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">06 — North Star & Metrics</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-8">How I'd measure success</h2>
+      </div>
+
+      <div class="reveal mb-10">
+        <div class="bg-blue-500/5 border border-blue-500/20 rounded-2xl p-6">
+          <p class="text-xs text-blue-400 font-body font-semibold uppercase tracking-widest mb-2">North Star Metric</p>
+          <p class="font-heading font-bold text-2xl text-text mb-2">% of PM work output with an AI-assist component</p>
+          <p class="text-muted font-body">Target: 60% within 6 months of launch. This measures product depth — not just activation, but whether PMs are relying on the system for their actual work, not just trying it once.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 reveal">
+        <div class="metric-card">
+          <p class="text-accent text-xs font-body font-semibold uppercase tracking-widest mb-3">Leading Indicators</p>
+          <ul class="space-y-2">
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-accent flex-shrink-0">▸</span>Daily active use (7-day rolling)</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-accent flex-shrink-0">▸</span>AI suggestion acceptance rate per module</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-accent flex-shrink-0">▸</span>Stakeholder briefings sent vs. manually written</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-accent flex-shrink-0">▸</span>PRD draft time (session duration)</li>
+          </ul>
+        </div>
+        <div class="metric-card">
+          <p class="text-green-400 text-xs font-body font-semibold uppercase tracking-widest mb-3">Lagging Indicators</p>
+          <ul class="space-y-2">
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-green-400 flex-shrink-0">▸</span>% of PM output with AI assist (north star)</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-green-400 flex-shrink-0">▸</span>Self-reported time saved per week</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-green-400 flex-shrink-0">▸</span>Renewal rate / subscription retention</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-green-400 flex-shrink-0">▸</span>Net Promoter Score (PMs)</li>
+          </ul>
+        </div>
+        <div class="metric-card">
+          <p class="text-yellow-400 text-xs font-body font-semibold uppercase tracking-widest mb-3">Counter-Metrics</p>
+          <ul class="space-y-2">
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-yellow-400 flex-shrink-0">▸</span>AI suggestion override rate (proxy for quality)</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-yellow-400 flex-shrink-0">▸</span>Time to correct an AI-generated briefing</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-yellow-400 flex-shrink-0">▸</span>Security/data incidents</li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-yellow-400 flex-shrink-0">▸</span>Stakeholder complaints about AI-generated content</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 WIREFRAMES -->
+  <section class="py-20 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">07 — Wireframes</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-3">What the experience looks like</h2>
+        <p class="text-muted font-body mb-8">The guiding principle: every screen should feel like talking to someone who already read your Jira board.</p>
+      </div>
+
+      <div class="space-y-10 reveal">
+
+        <!-- WIREFRAME 1: Morning Briefing -->
+        <div>
+          <p class="text-muted text-xs font-body uppercase tracking-widest mb-4">View 1 — Morning Briefing (Daily digest)</p>
+          <div class="wf-wrap">
+            <div class="wf-bar">
+              <span class="wf-dot" style="background:#FF5F56"></span>
+              <span class="wf-dot" style="background:#FFBD2E"></span>
+              <span class="wf-dot" style="background:#27C93F"></span>
+              <span class="wf-title ml-3">PM Intelligence Layer</span>
+            </div>
+            <div class="wf-topbar">
+              <div>
+                <p class="wf-label">Good morning, Brandon</p>
+                <p class="wf-title" style="font-size:0.78rem;font-family:'Inter',sans-serif;font-weight:400;color:#aaa;">Monday, March 30 · 3 items need attention</p>
+              </div>
+              <span class="wf-btn-xs wf-btn-blue">View all</span>
+            </div>
+            <div class="wf-body">
+
+              <p class="wf-label mb-3" style="color:#888;">What needs your attention today</p>
+
+              <div class="wf-alert wf-alert-warn">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="wf-alert-title">⚠ Sprint conflict detected</p>
+                    <p class="wf-text-sm">"Data Export v2" scoped for this sprint — backend estimate changed from 3 pts → 8 pts.</p>
+                    <p class="wf-text-sm" style="color:#f59e0b;margin-top:4px;">Matched to: Q2 Roadmap · Data Platform initiative</p>
+                  </div>
+                  <div class="flex gap-2 flex-shrink-0">
+                    <span class="wf-btn-xs wf-btn-ghost">View sprint</span>
+                    <span class="wf-btn-xs wf-btn-blue">Re-scope</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wf-alert wf-alert-info">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="wf-alert-title">📣 Customer signal — 3 new tickets</p>
+                    <p class="wf-text-sm">Theme: Users can't find bulk edit on mobile. Matches open initiative: Mobile UX Refresh (Q2)</p>
+                    <p class="wf-text-sm" style="color:#60a5fa;margin-top:4px;">3 tickets · 2 severity-3 · 1 severity-2</p>
+                  </div>
+                  <div class="flex gap-2 flex-shrink-0">
+                    <span class="wf-btn-xs wf-btn-ghost">View tickets</span>
+                    <span class="wf-btn-xs wf-btn-blue">Add to initiative</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wf-alert wf-alert-green">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="wf-alert-title">📊 Stakeholder briefing ready to review</p>
+                    <p class="wf-text-sm">Auto-generated from 7 days of sprint activity · Recipients: Eng Lead, VP Product, CS</p>
+                  </div>
+                  <span class="wf-btn-xs wf-btn-blue flex-shrink-0">Review &amp; send</span>
+                </div>
+              </div>
+
+              <hr class="wf-divider" />
+
+              <p class="wf-label mb-2" style="color:#888;">Today's focus</p>
+              <div>
+                <div class="wf-focus-item"><span class="wf-focus-dot"></span><p class="wf-text">Review sprint re-scope options for Data Export v2</p></div>
+                <div class="wf-focus-item"><span class="wf-focus-dot"></span><p class="wf-text">Approve stakeholder briefing before 11am standup</p></div>
+                <div class="wf-focus-item" style="border-bottom:none"><span class="wf-focus-dot" style="background:#888;"></span><p class="wf-text" style="color:#666;">PRD review: Notification Preferences (3 comments)</p></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- WIREFRAME 2: PRD Assist Mode -->
+        <div>
+          <p class="text-muted text-xs font-body uppercase tracking-widest mb-4">View 2 — PRD Draft Mode with Decision Support</p>
+          <div class="wf-wrap">
+            <div class="wf-bar">
+              <span class="wf-dot" style="background:#FF5F56"></span>
+              <span class="wf-dot" style="background:#FFBD2E"></span>
+              <span class="wf-dot" style="background:#27C93F"></span>
+              <span class="wf-title ml-3" style="color:#888;font-weight:400;">PRD: Notification Preferences Redesign</span>
+              <span class="wf-btn-xs wf-btn-ghost ml-auto">Save ✓</span>
+            </div>
+            <div class="wf-body">
+              <div style="display:grid;grid-template-columns:1fr 280px;gap:16px;">
+
+                <!-- Editor column -->
+                <div>
+                  <p class="wf-label mb-2">Problem Statement</p>
+                  <div class="wf-input" style="min-height:80px;">
+                    Users are unable to granularly control notification preferences, leading to high email unsubscribe rates and missed in-app alerts. Current settings are buried under Account → Preferences → Advanced...
+                  </div>
+                  <div style="display:flex;gap:8px;margin-top:10px;">
+                    <span class="wf-btn-xs wf-btn-blue">Continue writing</span>
+                    <span class="wf-btn-xs wf-btn-ghost">Run full PRD review</span>
+                  </div>
+                </div>
+
+                <!-- AI Sidebar -->
+                <div>
+                  <p class="wf-label mb-2" style="color:#60a5fa;">AI Assist</p>
+
+                  <div class="wf-insight">
+                    <p class="wf-insight-label">✦ Prior Decision</p>
+                    <p class="wf-text-sm">Similar scope explored Q3 2024 (Notification Audit PRD). Delayed due to event service dependency.</p>
+                    <p class="wf-text-sm" style="color:#22c55e;margin-top:4px;">That dependency shipped Dec 2024 ✓</p>
+                    <div style="display:flex;gap:6px;margin-top:8px;">
+                      <span class="wf-btn-xs wf-btn-ghost">View prior PRD</span>
+                      <span class="wf-btn-xs wf-btn-blue">Import sections</span>
+                    </div>
+                  </div>
+
+                  <div class="wf-risk">
+                    <p class="wf-risk-label">⚑ Risk Flag</p>
+                    <p class="wf-text-sm">Mobile notification UX flagged by 3 users this week. Consider mobile-first variant.</p>
+                    <div style="display:flex;gap:6px;margin-top:8px;">
+                      <span class="wf-btn-xs wf-btn-blue">Add to scope</span>
+                      <span class="wf-btn-xs wf-btn-ghost">Dismiss</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 PHASED ROLLOUT -->
+  <section class="py-20 border-b border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">08 — Phased Rollout</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-8">How I'd ship it</h2>
+      </div>
+
+      <div class="space-y-6 reveal">
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white text-xs font-heading font-bold">1</div>
+            <div class="w-px flex-1 bg-border mt-2"></div>
+          </div>
+          <div class="pb-8">
+            <div class="flex items-center gap-3 mb-2">
+              <p class="font-heading font-bold text-text">Phase 1 — Stakeholder Briefing Generator</p>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-body">MVP</span>
+            </div>
+            <p class="text-muted text-sm font-body leading-relaxed mb-3">Connect to Jira/Linear. Auto-generate a weekly status brief from sprint activity. PM reviews, edits, and sends. One integration. One workflow. Saves 45–90 minutes per week immediately.</p>
+            <p class="text-muted text-xs font-body"><span class="text-text">Why start here:</span> It's the easiest PM behavior to observe (everyone writes status updates), the value is immediately legible, and the integration surface is narrow. If we can't win here, we can't win anywhere.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white text-xs font-heading font-bold">2</div>
+            <div class="w-px flex-1 bg-border mt-2"></div>
+          </div>
+          <div class="pb-8">
+            <div class="flex items-center gap-3 mb-2">
+              <p class="font-heading font-bold text-text">Phase 2 — Document Intelligence + PRD Assist</p>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-surface border border-border text-muted font-body">Expansion</span>
+            </div>
+            <p class="text-muted text-sm font-body leading-relaxed mb-3">Connect to Notion/Confluence. Read existing PRDs, past decisions, customer feedback. Surface relevant context inline while PMs write. The system learns your product and stops letting institutional knowledge disappear when people leave.</p>
+            <p class="text-muted text-xs font-body"><span class="text-text">Why second:</span> Requires more trust. PMs need to have seen Phase 1 work reliably before they'll let AI near their PRDs.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="w-8 h-8 rounded-full bg-border flex items-center justify-center text-muted text-xs font-heading font-bold">3</div>
+          </div>
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <p class="font-heading font-bold text-text">Phase 3 — Full Intelligence Layer</p>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-surface border border-border text-muted font-body">Vision</span>
+            </div>
+            <p class="text-muted text-sm font-body leading-relaxed mb-3">Cross-tool intelligence across Jira, Notion, Slack, customer feedback, and your metrics stack. Morning briefing surfaces the three things that matter today. North Star Tracker flags when shipped features aren't moving their stated metrics. The PM's full working memory — externalised and automated.</p>
+            <p class="text-muted text-xs font-body"><span class="text-text">The goal:</span> Every PM on the platform operates with the institutional knowledge of someone who's been in the role for 5 years — regardless of tenure.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 REFLECTION -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal">
+        <p class="section-label mb-4">09 — Reflection</p>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-8">What I'd watch out for</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-accent text-sm font-body font-semibold mb-3">The real risks</p>
+          <ul class="space-y-3">
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5">▸</span><span><span class="text-text font-medium">Adoption kills adoption.</span> Every new integration PM needs to set up is a 30% drop-off risk. Phase 1 must work with zero integrations before asking for them.</span></li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5">▸</span><span><span class="text-text font-medium">AI that writes bad briefings damages trust permanently.</span> One sent-to-the-wrong-audience update and the PM stops using the tool. Quality gates matter more than feature breadth.</span></li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-accent flex-shrink-0 mt-0.5">▸</span><span><span class="text-text font-medium">Enterprise procurement is slow.</span> If this is a team tool, the buying cycle is 6–12 months. Solo PM pricing (individual tier) gets feedback faster, but solo PMs don't stay solo.</span></li>
+          </ul>
+        </div>
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <p class="text-yellow-400 text-sm font-body font-semibold mb-3">The hard product question</p>
+          <ul class="space-y-3">
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-yellow-400 flex-shrink-0 mt-0.5">▸</span><span>The right MVP is probably narrower than this. Probably one workflow, not four modules. The "AI operating system" framing is a vision — what's the ten-minute demo that makes a PM say "I need this now"?</span></li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-yellow-400 flex-shrink-0 mt-0.5">▸</span><span>If I were building this, the North Star Tracker might be the killer feature — not because it's the most impressive, but because "your shipped features aren't moving their metrics" is a truth nobody else will tell you.</span></li>
+            <li class="text-muted text-sm font-body flex gap-2"><span class="text-yellow-400 flex-shrink-0 mt-0.5">▸</span><span>I'd ship Phase 1 in six weeks and put it in front of 10 real PMs before writing a single line of Phase 2 spec.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 reveal bg-blue-500/5 border border-blue-500/20 rounded-2xl p-6">
+        <p class="text-muted font-body leading-relaxed">
+          <span class="text-text font-semibold">Why I wrote this:</span> The PM productivity gap is real and personal. I built parts of this system for my own workflows — internal agents that read customer tickets, draft summaries, and flag anomalies in product data. The technology works. What's missing is the opinionated product layer that makes it usable by PMs who aren't also AI builders. That's the gap. That's the product.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK CTA -->
+  <section class="py-16 border-t border-border">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-muted text-sm font-body mb-2">Read more case studies</p>
+      <h3 class="font-heading font-bold text-2xl text-text mb-6">AI Job Scoring & Matching at TrueComp</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="truecomp-ai-scoring.html"
+           class="px-6 py-3 bg-accent hover:bg-accent-hover text-white font-body font-medium rounded-full transition-colors">
+          Read case study →
+        </a>
+        <a href="../index.html"
+           class="px-6 py-3 border border-border hover:border-accent hover:text-accent text-text font-body font-medium rounded-full transition-colors">
+          Back to portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 border-t border-border">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-muted text-sm font-body">© 2026 Brandon Azuoma</p>
+      <div class="flex items-center gap-6">
+        <a href="https://www.linkedin.com/in/brandon-azuoma-756b48148/" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-text text-sm font-body transition-colors">LinkedIn</a>
+        <a href="https://github.com/bazuoma" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-text text-sm font-body transition-colors">GitHub</a>
+        <a href="mailto:bazuoma@gmail.com" class="text-muted hover:text-text text-sm font-body transition-colors">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
