@@ -133,7 +133,8 @@
         <div>
           <p class="text-muted font-body leading-relaxed mb-5">I wanted a side project that answered a real question: <em class="text-text">can AI enhance a social experience without becoming the point?</em></p>
           <p class="text-muted font-body leading-relaxed mb-5">Party games are everywhere. Music apps are everywhere. But I kept noticing that the best moments at social gatherings weren't the games with the most rules — they were the ones with the most room for personality. The spontaneous song someone throws on. The group vote that goes sideways.</p>
-          <p class="text-muted font-body leading-relaxed">I wanted to bottle that. A game where the prompt sets the scene, each player brings their own song, and the room decides who read it best. Simple loop. High social stakes. No instructions needed.</p>
+          <p class="text-muted font-body leading-relaxed mb-5">I also noticed a separate, quieter frustration: sharing music with friends is weirdly passive. You send a link, they maybe listen, the conversation dies. There's no shared moment, no reaction, no stakes. The song just disappears into a chat thread.</p>
+          <p class="text-muted font-body leading-relaxed">I wanted to bottle both things. A game where the prompt sets the scene, each player brings their own song, and the room decides who read it best — and in the process, everyone walks away having actually heard something new. Simple loop. High social stakes. No instructions needed.</p>
         </div>
         <div class="space-y-4">
           <div class="bg-surface border border-border rounded-xl p-5">
@@ -151,6 +152,7 @@
               <li class="text-muted text-sm font-body flex gap-2"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>Jackbox: great games, locked behind paywall and TV setup</li>
               <li class="text-muted text-sm font-body flex gap-2"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>Spotify group sessions: passive listening, not a game</li>
               <li class="text-muted text-sm font-body flex gap-2"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>Most trivia apps: music knowledge, not music taste</li>
+              <li class="text-muted text-sm font-body flex gap-2"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>Chat / DMs: sharing a song is passive — no reaction, no shared moment, no stakes</li>
             </ul>
           </div>
         </div>
@@ -166,9 +168,13 @@
         <h2 class="font-heading font-bold text-3xl sm:text-4xl text-text mb-8">The specific problem I was solving</h2>
       </div>
       <div class="reveal">
-        <div class="bg-blue-500/5 border border-blue-500/20 rounded-2xl p-6 mb-8">
-          <p class="font-heading font-bold text-xl text-text mb-2">The problem statement</p>
+        <div class="bg-blue-500/5 border border-blue-500/20 rounded-2xl p-6 mb-5">
+          <p class="font-heading font-bold text-xl text-text mb-2">Problem 1 — The party game gap</p>
           <p class="text-muted font-body leading-relaxed">Groups of friends want a shared activity that's low-barrier to join, naturally competitive, and generates actual conversation — but most party game options require equipment, downloads, or learning curves that kill the vibe before the game starts.</p>
+        </div>
+        <div class="bg-blue-500/5 border border-blue-500/20 rounded-2xl p-6 mb-8">
+          <p class="font-heading font-bold text-xl text-text mb-2">Problem 2 — Music sharing has no moment</p>
+          <p class="text-muted font-body leading-relaxed">People constantly want to share music with their friends, but every current path is passive. Sending a link in a chat means no shared reaction, no stakes, and no guarantee the other person even presses play. There's no social ritual around introducing someone to a song you love — Mic Check creates one.</p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 reveal">
@@ -252,6 +258,16 @@
               <p class="font-heading font-semibold text-text mb-1">Decision: Where AI lives in the loop</p>
               <p class="text-muted text-sm font-body leading-relaxed mb-3">Claude API handles prompt generation, song evaluation context, and end-of-round summaries. The AI never plays against humans — it's infrastructure that makes the human interactions better.</p>
               <p class="text-muted text-xs font-body"><span class="text-text">Why this matters:</span> If players feel like they're competing against an algorithm, the social dynamic breaks.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface border border-border rounded-xl p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl flex-shrink-0">🎶</span>
+            <div>
+              <p class="font-heading font-semibold text-text mb-1">Decision: The game as a music sharing vehicle</p>
+              <p class="text-muted text-sm font-body leading-relaxed mb-3">Mic Check had to double as a friendlier way to share music. The prompt forces context — "best song for a road trip at midnight" — so when someone submits a track, it lands with meaning. Players don't just hear a song; they hear why someone chose it. That's the moment that makes sharing feel alive.</p>
+              <p class="text-muted text-xs font-body"><span class="text-text">Design implication:</span> Every round needed a reveal moment where songs are shown before voting — not hidden — so players could absorb the picks and the conversation could start naturally.</p>
             </div>
           </div>
         </div>
