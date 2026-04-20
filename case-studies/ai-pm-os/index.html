@@ -6,6 +6,7 @@
   <title>The PM Intelligence Layer — Brandon Azuoma</title>
   <meta name="description" content="Thought leadership: How Brandon Azuoma would design an AI operating system for effective product managers — the intelligence layer that connects your tools, your team, and your roadmap." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -195,23 +196,23 @@
             <p class="text-red-400 text-sm font-body font-semibold mb-2">How PMs spend their time (the honest version)</p>
             <ul class="space-y-2">
               <li class="text-muted text-sm font-body flex gap-2 items-start">
-                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <i data-lucide="x" class="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5"></i>
                 <span>Reading and summarizing information across 7–10 tools</span>
               </li>
               <li class="text-muted text-sm font-body flex gap-2 items-start">
-                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <i data-lucide="x" class="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5"></i>
                 <span>Writing status updates that restate Jira tickets in plain English</span>
               </li>
               <li class="text-muted text-sm font-body flex gap-2 items-start">
-                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <i data-lucide="x" class="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5"></i>
                 <span>Starting PRDs from a blank page with no memory of prior decisions</span>
               </li>
               <li class="text-muted text-sm font-body flex gap-2 items-start">
-                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <i data-lucide="x" class="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5"></i>
                 <span>Rebuilding context after every context switch</span>
               </li>
               <li class="text-muted text-sm font-body flex gap-2 items-start">
-                <span class="text-red-400 flex-shrink-0 mt-0.5">✗</span>
+                <i data-lucide="x" class="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5"></i>
                 <span>Preparing for the same meeting they had 3 weeks ago</span>
               </li>
             </ul>
@@ -284,7 +285,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
 
         <div class="bg-surface border border-border rounded-2xl p-6">
-          <div class="w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-lg mb-4">🌱</div>
+          <div class="w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4"><i data-lucide="leaf" class="w-5 h-5 text-blue-400"></i></div>
           <p class="font-heading font-bold text-text mb-1">Sarah</p>
           <p class="text-accent text-xs font-body mb-3">Junior PM · Series B Startup</p>
           <p class="text-muted text-sm font-body leading-relaxed mb-4">
@@ -297,7 +298,7 @@
         </div>
 
         <div class="bg-surface border border-border rounded-2xl p-6">
-          <div class="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-lg mb-4">⚡</div>
+          <div class="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-4"><i data-lucide="zap" class="w-5 h-5 text-green-400"></i></div>
           <p class="font-heading font-bold text-text mb-1">Marcus</p>
           <p class="text-accent text-xs font-body mb-3">Senior PM · Enterprise SaaS</p>
           <p class="text-muted text-sm font-body leading-relaxed mb-4">
@@ -310,7 +311,7 @@
         </div>
 
         <div class="bg-surface border border-border rounded-2xl p-6">
-          <div class="w-10 h-10 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-lg mb-4">🎯</div>
+          <div class="w-10 h-10 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-4"><i data-lucide="target" class="w-5 h-5 text-purple-400"></i></div>
           <p class="font-heading font-bold text-text mb-1">Linda</p>
           <p class="text-accent text-xs font-body mb-3">Head of Product · 200-person company</p>
           <p class="text-muted text-sm font-body leading-relaxed mb-4">
@@ -367,7 +368,7 @@
           <div class="option-row mb-px">
             <div class="option-cell selected">
               <div class="flex items-center gap-2 mb-0.5">
-                <p class="text-text text-sm font-semibold">Connected intelligence layer ✓</p>
+                <p class="text-text text-sm font-semibold">Connected intelligence layer</p>
                 <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/20">Selected</span>
               </div>
               <p class="text-muted text-xs">AI layer that reads across Jira, Notion, Slack, and customer feedback to synthesize cross-tool context</p>
@@ -408,7 +409,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 reveal">
 
         <div class="bg-surface border border-border rounded-2xl p-6">
-          <p class="text-2xl mb-3">📄</p>
+          <div class="mb-3"><i data-lucide="file-text" class="w-7 h-7 text-accent"></i></div>
           <p class="font-heading font-bold text-text mb-2">Document Intelligence</p>
           <p class="text-muted text-sm font-body leading-relaxed mb-3">
             AI reads PRDs, meeting notes, and customer feedback and surfaces patterns. "Three customers this week mentioned they can't find the export button" — without you having to read every ticket.
@@ -417,7 +418,7 @@
         </div>
 
         <div class="bg-surface border border-border rounded-2xl p-6">
-          <p class="text-2xl mb-3">🧠</p>
+          <div class="mb-3"><i data-lucide="brain" class="w-7 h-7 text-accent"></i></div>
           <p class="font-heading font-bold text-text mb-2">Decision Support</p>
           <p class="text-muted text-sm font-body leading-relaxed mb-3">
             Before you ship a feature, the system runs an automated check: does this conflict with a prior product decision? Does the data support the hypothesis? Have similar bets failed elsewhere?
@@ -426,7 +427,7 @@
         </div>
 
         <div class="bg-surface border border-border rounded-2xl p-6">
-          <p class="text-2xl mb-3">📊</p>
+          <div class="mb-3"><i data-lucide="bar-chart" class="w-7 h-7 text-accent"></i></div>
           <p class="font-heading font-bold text-text mb-2">Stakeholder Briefings</p>
           <p class="text-muted text-sm font-body leading-relaxed mb-3">
             Auto-generates weekly status updates from Jira and Linear state, formatted differently for engineering (technical detail), leadership (business impact), and cross-functional partners (dependencies only).
@@ -435,7 +436,7 @@
         </div>
 
         <div class="bg-surface border border-border rounded-2xl p-6">
-          <p class="text-2xl mb-3">🎯</p>
+          <div class="mb-3"><i data-lucide="target" class="w-7 h-7 text-accent"></i></div>
           <p class="font-heading font-bold text-text mb-2">North Star Tracker</p>
           <p class="text-muted text-sm font-body leading-relaxed mb-3">
             Live dashboard mapping your active roadmap initiatives to their declared metrics. Flags when a shipped feature hasn't moved its stated metric in 30 days — so nothing ships and disappears into the void.
@@ -530,7 +531,7 @@
               <div class="wf-alert wf-alert-warn">
                 <div class="flex items-start justify-between gap-3">
                   <div>
-                    <p class="wf-alert-title">⚠ Sprint conflict detected</p>
+                    <p class="wf-alert-title" style="display:flex;align-items:center;gap:6px;"><i data-lucide="alert-triangle" style="width:14px;height:14px;color:#f59e0b;flex-shrink:0;"></i> Sprint conflict detected</p>
                     <p class="wf-text-sm">"Data Export v2" scoped for this sprint — backend estimate changed from 3 pts → 8 pts.</p>
                     <p class="wf-text-sm" style="color:#f59e0b;margin-top:4px;">Matched to: Q2 Roadmap · Data Platform initiative</p>
                   </div>
@@ -544,7 +545,7 @@
               <div class="wf-alert wf-alert-info">
                 <div class="flex items-start justify-between gap-3">
                   <div>
-                    <p class="wf-alert-title">📣 Customer signal — 3 new tickets</p>
+                    <p class="wf-alert-title" style="display:flex;align-items:center;gap:6px;"><i data-lucide="megaphone" style="width:14px;height:14px;color:#60a5fa;flex-shrink:0;"></i> Customer signal — 3 new tickets</p>
                     <p class="wf-text-sm">Theme: Users can't find bulk edit on mobile. Matches open initiative: Mobile UX Refresh (Q2)</p>
                     <p class="wf-text-sm" style="color:#60a5fa;margin-top:4px;">3 tickets · 2 severity-3 · 1 severity-2</p>
                   </div>
@@ -558,7 +559,7 @@
               <div class="wf-alert wf-alert-green">
                 <div class="flex items-start justify-between gap-3">
                   <div>
-                    <p class="wf-alert-title">📊 Stakeholder briefing ready to review</p>
+                    <p class="wf-alert-title" style="display:flex;align-items:center;gap:6px;"><i data-lucide="bar-chart" style="width:14px;height:14px;color:#22c55e;flex-shrink:0;"></i> Stakeholder briefing ready to review</p>
                     <p class="wf-text-sm">Auto-generated from 7 days of sprint activity · Recipients: Eng Lead, VP Product, CS</p>
                   </div>
                   <span class="wf-btn-xs wf-btn-blue flex-shrink-0">Review &amp; send</span>
@@ -587,7 +588,7 @@
               <span class="wf-dot" style="background:#FFBD2E"></span>
               <span class="wf-dot" style="background:#27C93F"></span>
               <span class="wf-title ml-3" style="color:#888;font-weight:400;">PRD: Notification Preferences Redesign</span>
-              <span class="wf-btn-xs wf-btn-ghost ml-auto">Save ✓</span>
+              <span class="wf-btn-xs wf-btn-ghost ml-auto" style="display:inline-flex;align-items:center;gap:3px;">Save <i data-lucide="check" style="width:10px;height:10px;stroke-width:3;color:#22c55e;"></i></span>
             </div>
             <div class="wf-body">
               <div style="display:grid;grid-template-columns:1fr 280px;gap:16px;">
@@ -609,9 +610,9 @@
                   <p class="wf-label mb-2" style="color:#60a5fa;">AI Assist</p>
 
                   <div class="wf-insight">
-                    <p class="wf-insight-label">✦ Prior Decision</p>
+                    <p class="wf-insight-label" style="display:flex;align-items:center;gap:4px;"><i data-lucide="history" style="width:11px;height:11px;"></i> Prior Decision</p>
                     <p class="wf-text-sm">Similar scope explored Q3 2024 (Notification Audit PRD). Delayed due to event service dependency.</p>
-                    <p class="wf-text-sm" style="color:#22c55e;margin-top:4px;">That dependency shipped Dec 2024 ✓</p>
+                    <p class="wf-text-sm" style="color:#22c55e;margin-top:4px;display:flex;align-items:center;gap:3px;">That dependency shipped Dec 2024 <i data-lucide="check" style="width:11px;height:11px;stroke-width:3;"></i></p>
                     <div style="display:flex;gap:6px;margin-top:8px;">
                       <span class="wf-btn-xs wf-btn-ghost">View prior PRD</span>
                       <span class="wf-btn-xs wf-btn-blue">Import sections</span>
@@ -619,7 +620,7 @@
                   </div>
 
                   <div class="wf-risk">
-                    <p class="wf-risk-label">⚑ Risk Flag</p>
+                    <p class="wf-risk-label" style="display:flex;align-items:center;gap:4px;"><i data-lucide="flag" style="width:11px;height:11px;"></i> Risk Flag</p>
                     <p class="wf-text-sm">Mobile notification UX flagged by 3 users this week. Consider mobile-first variant.</p>
                     <div style="display:flex;gap:6px;margin-top:8px;">
                       <span class="wf-btn-xs wf-btn-blue">Add to scope</span>
@@ -766,6 +767,7 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    lucide.createIcons();
   </script>
 
 </body>

@@ -6,6 +6,7 @@
   <title>Brandon Azuoma — Product Manager & AI Builder</title>
   <meta name="description" content="Lead Product Manager at TrueComp — building AI-powered products for government agencies. Based in Los Angeles." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -158,7 +159,7 @@
         <a href="case-studies/mic-check/"
            class="project-card block border border-border rounded-2xl p-6 bg-surface group reveal">
           <div class="flex items-start justify-between mb-4">
-            <div class="w-12 h-12 rounded-xl bg-border flex items-center justify-center text-2xl">🎤</div>
+            <div class="w-12 h-12 rounded-xl bg-border flex items-center justify-center"><i data-lucide="mic" class="w-6 h-6 text-muted"></i></div>
             <div class="flex items-center gap-2">
               <span class="text-xs font-body px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Personal</span>
               <span class="text-muted text-sm group-hover:text-accent transition-colors">→</span>
@@ -180,7 +181,7 @@
         <a href="case-studies/truecomp-ai-scoring/"
            class="project-card block border border-border rounded-2xl p-6 bg-surface group reveal">
           <div class="flex items-start justify-between mb-4">
-            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-2xl">🏛️</div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center"><i data-lucide="landmark" class="w-6 h-6 text-blue-400"></i></div>
             <div class="flex items-center gap-2">
               <span class="text-xs font-body px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">Professional</span>
               <span class="text-muted text-sm group-hover:text-accent transition-colors">→</span>
@@ -366,14 +367,14 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
         <div class="reveal exp-card border border-border rounded-2xl p-6 bg-surface">
-          <p class="text-3xl mb-4">🎓</p>
+          <div class="mb-4"><i data-lucide="graduation-cap" class="w-8 h-8 text-accent"></i></div>
           <h3 class="font-heading font-bold text-lg text-text mb-1">Bachelor of Business Administration</h3>
           <p class="text-accent text-sm font-body mb-2">Applied Information Management Systems</p>
           <p class="text-muted text-sm font-body">Loyola Marymount University · Los Angeles, CA</p>
         </div>
 
         <div class="reveal exp-card border border-border rounded-2xl p-6 bg-surface">
-          <p class="text-3xl mb-4">📜</p>
+          <div class="mb-4"><i data-lucide="scroll" class="w-8 h-8 text-accent"></i></div>
           <h3 class="font-heading font-bold text-lg text-text mb-4">Certifications</h3>
           <ul class="space-y-3">
             <li class="flex items-start gap-3">
@@ -530,6 +531,7 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    lucide.createIcons();
   </script>
 
 </body>
